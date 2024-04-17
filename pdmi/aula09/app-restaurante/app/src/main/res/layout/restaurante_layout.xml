@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEE3E0"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detalhes Restaurante"
+        android:textAlignment="center"
+        android:textSize="34sp" />
+
+    <EditText
+        android:id="@+id/edtNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="200px"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="Nome do Restaurante"
+        android:inputType="text"
+        tools:text="Mc Donalds" />
+
+    <EditText
+        android:id="@+id/edtEndereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="200px"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="Endereço do Restaurante"
+        android:inputType="text"
+        tools:text="Av. Aguia de Haia" />
+
+    <EditText
+        android:id="@+id/edtTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="200px"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="Tipo de Comida"
+        android:inputType="text"
+        tools:text="Hamburgueres" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edtLongitude"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70px"
+            android:layout_weight="1"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="Longitude"
+            android:inputType="text"
+            android:text="6.0" />
+
+        <EditText
+            android:id="@+id/edtLatitude"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="70px"
+            android:layout_weight="1"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="Latitude"
+            android:inputType="text"
+            android:text="7.0" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="200px"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="Descrição"
+        android:inputType="text"
+        tools:text="Descricao do Restaurante" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="430px"
+        android:backgroundTint="#FDD7A6"
+        android:text="Salvar" />
+
+    <Button
+        android:id="@+id/btnVerLista"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="430px"
+        android:backgroundTint="#FDD7A6"
+        android:text="Ver Lista" />
+
+    <ListView
+        android:id="@+id/lstRestaurantes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
