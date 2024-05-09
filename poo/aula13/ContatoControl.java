@@ -1,3 +1,5 @@
+import java.util.List;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -6,6 +8,9 @@ import javafx.collections.ObservableList;
 public class ContatoControl {
     private ObservableList<Contato> lista = 
         FXCollections.observableArrayList();
+
+    private ContatoDAO dao = new ContatoDAOImpl();
+
     private StringProperty telefone = new SimpleStringProperty("");
     private StringProperty nome = new SimpleStringProperty("");
     private StringProperty email = new SimpleStringProperty("");
@@ -31,15 +36,18 @@ public class ContatoControl {
     }
 
     public void gravar() { 
-        Contato a = toEntity();
-        lista.add(a);
+        Contato c = toEntity();
+        dao.adicionar(c);
+        List<Contato> tempLista = dao.pesquisarTodos();
+        lista.clear();
+        lista.addAll( tempLista );
         limparCampos();
     }
 
     public void pesquisar() { 
-        for (Contato a : lista) { 
-            if (a.getNome().contains( nome.get() )) { 
-                fromEntity(a);
+        for (Contato c : lista) { 
+            if (c.getNome().contains( nome.get() )) { 
+                fromEntity(c);
             }
         }
     }

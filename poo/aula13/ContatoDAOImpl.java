@@ -47,6 +47,28 @@ public class ContatoDAOImpl implements ContatoDAO {
         }
     }
 
+    public List<Contato> pesquisarTodos(){
+        List<Contato> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM contatos ";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            System.out.println("Select executado com sucesso");
+
+            while (rs.next()) { 
+                Contato c = new Contato();
+                c.setNome(rs.getString("nome"));
+                c.setTelefone(rs.getString("telefone"));
+                c.setEmail(rs.getString("email"));
+                lista.add(c);
+            }
+        } catch(SQLException e) { 
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
     public List<Contato> pesquisarPorNome(String nome){
         List<Contato> lista = new ArrayList<>();
 

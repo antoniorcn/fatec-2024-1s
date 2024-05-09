@@ -37,7 +37,6 @@ public class ContatoBoundary extends Application {
     }
 
     public void bind() { 
-        StringConverter<Number> numberConverter = new NumberStringConverter();
         Bindings.bindBidirectional(txtNome.textProperty(), control.nomeProperty());
         Bindings.bindBidirectional(txtTelefone.textProperty(), control.telefoneProperty());
         Bindings.bindBidirectional(txtEmail.textProperty(), control.emailProperty());

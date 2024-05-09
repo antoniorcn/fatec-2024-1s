@@ -3,5 +3,6 @@ public interface ContatoDAO {
 
     public void adicionar(Contato c);
     public List<Contato> pesquisarPorNome(String nome);
+    public List<Contato> pesquisarTodos();
 
 }
