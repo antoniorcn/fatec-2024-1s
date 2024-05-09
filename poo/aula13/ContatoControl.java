@@ -38,9 +38,7 @@ public class ContatoControl {
     public void gravar() { 
         Contato c = toEntity();
         dao.adicionar(c);
-        List<Contato> tempLista = dao.pesquisarTodos();
-        lista.clear();
-        lista.addAll( tempLista );
+        pesquisarTodos();
         limparCampos();
     }
 
@@ -50,6 +48,16 @@ public class ContatoControl {
                 fromEntity(c);
             }
         }
+    }
+
+    public void excluir( Contato c ) { 
+        // TODO: Excluir contato
+    }
+
+    public void pesquisarTodos() { 
+        List<Contato> tempLista = dao.pesquisarTodos();
+        lista.clear();
+        lista.addAll( tempLista );
     }
 
     public ObservableList<Contato> getLista() {

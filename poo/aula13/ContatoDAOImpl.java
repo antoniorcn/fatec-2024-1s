@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 
 public class ContatoDAOImpl implements ContatoDAO { 
     private static final String JDBC_URL = 
-    "jdbc:mariadb://localhost:3306/agenda?allowMultiQueries=true";
+    "jdbc:mariadb://localhost:3306/poo?allowMultiQueries=true";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASS = "alunofatec";
+    private static final String JDBC_PASS = "123456";
 
 
     private Connection con;

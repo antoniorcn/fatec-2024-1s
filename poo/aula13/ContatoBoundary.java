@@ -3,6 +3,7 @@ import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -10,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
@@ -32,8 +34,46 @@ public class ContatoBoundary extends Application {
         TableColumn<Contato, String> colEmail = new TableColumn<>("Email");
         colEmail.setCellValueFactory( new PropertyValueFactory<>("email"));
 
-        table.getColumns().addAll(colNome, colTelefone, colEmail);
+        table
+        .getSelectionModel()
+        .selectedItemProperty().addListener(
+            (obs, oldSelection, newSelection) -> {
+                if (newSelection != null) {
+                    System.out.println("Selecionado: " + newSelection);
+                    control.fromEntity(newSelection);
+                }
+            });
+
+        TableColumn<Contato, Void> colAcoes = new 
+		TableColumn<>("Ações");
+        Callback<TableColumn<Contato, Void>, TableCell<Contato, Void>>
+        callback = new Callback<>() { 
+            public TableCell<Contato, Void> call(TableColumn<Contato, Void> coluna) {
+                TableCell<Contato, Void> tc = new TableCell<>() {
+                    final Button btnExcluir = new Button("Excluir");
+                    {
+                        btnExcluir.setOnAction(event -> { 
+                            Contato a1 = table.getItems().get(getIndex());
+                            control.excluir(a1);
+                        });
+                    }
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btnExcluir);
+                        }
+                    }
+                };
+                return tc;
+            }
+        };
+
+        table.getColumns().addAll(  colNome, colTelefone, 
+                                    colEmail, colAcoes);
         table.setItems( control.getLista() );
+        colAcoes.setCellFactory( callback );
     }
 
     public void bind() { 
@@ -71,6 +111,7 @@ public class ContatoBoundary extends Application {
         stage.setScene(scn);
         stage.setTitle("Gestão de Contatos");
         stage.show();
+        control.pesquisarTodos();
     }
 
     public static void main(String[] args) {
