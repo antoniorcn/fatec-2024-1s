@@ -63,6 +63,7 @@ public class ContatoDAOImpl implements ContatoDAO {
                 c.setNome(rs.getString("nome"));
                 c.setTelefone(rs.getString("telefone"));
                 c.setEmail(rs.getString("email"));
+                c.setId(rs.getLong("id"));
                 lista.add(c);
             }
         } catch(SQLException e) { 
@@ -88,6 +89,7 @@ public class ContatoDAOImpl implements ContatoDAO {
                 c.setNome(rs.getString("nome"));
                 c.setTelefone(rs.getString("telefone"));
                 c.setEmail(rs.getString("email"));
+                c.setId(rs.getLong("id"));
                 lista.add(c);
             }
         } catch(SQLException e) { 
@@ -106,6 +108,25 @@ public class ContatoDAOImpl implements ContatoDAO {
             stmt.setString(1, c.getNome());
             int linhas = stmt.executeUpdate();
             System.out.println("Excluir executado com sucesso, foram " + 
+            " afetadas " + linhas + " linhas");
+        } catch(SQLException e) { 
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void atualizar( long id, Contato c ) { 
+        try {
+            String sql = "UPDATE contatos SET nome=?, telefone=?, email=? "+
+            "WHERE id=?";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, c.getNome());
+            stmt.setString(2, c.getTelefone());
+            stmt.setString(3, c.getEmail());
+            stmt.setLong(4, id);
+            int linhas = stmt.executeUpdate();
+            System.out.println("Atualização executada com sucesso, foram " + 
             " afetadas " + linhas + " linhas");
         } catch(SQLException e) { 
             e.printStackTrace();

@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -90,6 +91,7 @@ public class ContatoBoundary extends Application {
 
         Button btnGravar = new Button("Gravar");
         Button btnPesquisar = new Button("Pesquisar");
+        Button btnNovo = new Button("Criar Novo");
 
         paneForm.add(new Label("Nome: "), 0, 0);
         paneForm.add(txtNome, 1, 0);
@@ -98,13 +100,14 @@ public class ContatoBoundary extends Application {
         paneForm.add(new Label("Email: "), 0, 2);
         paneForm.add(txtEmail, 1, 2);
         paneForm.add(btnGravar, 0,3);
-        paneForm.add(btnPesquisar, 1,3);
+        paneForm.add(new FlowPane(btnPesquisar, btnNovo), 1,3);
 
         bind();
         generateTable();
 
         btnGravar.setOnAction( e-> control.gravar() );
         btnPesquisar.setOnAction( e-> control.pesquisar() );
+        btnNovo.setOnAction( e -> control.novo() );
         
         panePrincipal.setTop( paneForm );
         panePrincipal.setCenter( table );

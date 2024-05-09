@@ -5,5 +5,6 @@ public interface ContatoDAO {
     public List<Contato> pesquisarPorNome(String nome);
     public List<Contato> pesquisarTodos();
     public void excluir( Contato c ); 
+    public void atualizar( long id, Contato c );
 
 }

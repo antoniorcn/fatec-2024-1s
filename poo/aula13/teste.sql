@@ -3,10 +3,13 @@ SHOW DATABASES;
 CREATE DATABASE agenda;
 USE agenda;
 
+DROP TABLE contatos;
 CREATE TABLE contatos (
+	id int AUTO_INCREMENT,
 	nome char(50),
 	telefone char(20),
-	email char(50)
+	email char(50),
+	primary key(id)
 );
 
 SHOW TABLES;

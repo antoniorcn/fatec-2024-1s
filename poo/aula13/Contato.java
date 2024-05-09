@@ -1,8 +1,16 @@
 public class Contato { 
 
+    private long id;
     private String nome;
     private String telefone;
     private String email;
+
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getNome() { 
         return this.nome;
@@ -27,7 +35,7 @@ public class Contato {
 
     @Override
     public String toString() { 
-        return this.nome + " - " + this.telefone + " - " + this.email;
+        return "(" + this.id + ") " + this.nome + " - " + this.telefone + " - " + this.email;
     }
 
 }
