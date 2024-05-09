@@ -30,6 +30,7 @@ public class ContatoDAOImpl implements ContatoDAO {
         }
     }
 
+    @Override
     public void adicionar(Contato c){
         try {
             String sql = "INSERT INTO contatos (nome, telefone, email) "+
@@ -47,6 +48,7 @@ public class ContatoDAOImpl implements ContatoDAO {
         }
     }
 
+    @Override
     public List<Contato> pesquisarTodos(){
         List<Contato> lista = new ArrayList<>();
 
@@ -69,6 +71,7 @@ public class ContatoDAOImpl implements ContatoDAO {
         return lista;
     }
 
+    @Override
     public List<Contato> pesquisarPorNome(String nome){
         List<Contato> lista = new ArrayList<>();
 
@@ -91,6 +94,22 @@ public class ContatoDAOImpl implements ContatoDAO {
             e.printStackTrace();
         }
         return lista;
+    }
+
+    @Override
+    public void excluir( Contato c ) {
+        try {
+            String sql = "DELETE FROM contatos "+
+            "WHERE nome = ?";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, c.getNome());
+            int linhas = stmt.executeUpdate();
+            System.out.println("Excluir executado com sucesso, foram " + 
+            " afetadas " + linhas + " linhas");
+        } catch(SQLException e) { 
+            e.printStackTrace();
+        }
     }
 
 }

@@ -51,7 +51,8 @@ public class ContatoControl {
     }
 
     public void excluir( Contato c ) { 
-        // TODO: Excluir contato
+        dao.excluir( c );
+        pesquisarTodos();
     }
 
     public void pesquisarTodos() { 
