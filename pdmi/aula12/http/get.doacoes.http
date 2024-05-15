@@ -1,0 +1,2 @@
+GET https://fatec-2024-1s-pdmi-default-rtdb.firebaseio.com/doacoes.json HTTP/1.1
+

@@ -1,0 +1,7 @@
+POST https://fatec-2024-1s-pdmi-default-rtdb.firebaseio.com/doacoes.json HTTP/1.1
+Content-Type: application/json
+
+{
+    "produto": "Calcados",
+    "estado": "novo"
+}
