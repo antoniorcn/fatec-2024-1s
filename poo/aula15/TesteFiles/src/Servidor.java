@@ -18,10 +18,17 @@ public class Servidor {
             out.flush();
 
             InputStream in = soc.getInputStream();
+            InputStream tecladoIn = System.in;
             while( true ) {
                 if (in.available() > 0) {
                     int i = in.read();
                     System.out.print((char)i);
+                }
+                if (tecladoIn.available() > 0) {
+                    int i = tecladoIn.read();
+                    System.out.print((char)i);
+                    out.write(i);
+                    out.flush();
                 }
             }
 
