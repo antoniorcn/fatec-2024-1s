@@ -1,5 +1,6 @@
 package com.example.agenda_contato_recyclevioew_firebase.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -24,6 +25,12 @@ class FormularioActivity : AppCompatActivity() {
         setContentView(R.layout.formulario_layout)
 
         val btnGravar = findViewById<Button>(R.id.btnGravar)
+        val btnListagem = findViewById<Button>(R.id.btnListagem)
+        btnListagem.setOnClickListener {
+            val intent = Intent(this, ListagemActivity::class.java)
+            startActivity(intent)
+        }
+
         btnGravar.setOnClickListener {
             val txtNome = findViewById<EditText>(R.id.txtNome)
             val txtTelefone = findViewById<EditText>(R.id.txtTelefone)
