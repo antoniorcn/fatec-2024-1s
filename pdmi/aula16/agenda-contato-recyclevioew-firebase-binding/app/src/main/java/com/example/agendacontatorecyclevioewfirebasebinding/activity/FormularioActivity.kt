@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.agendacontatorecyclevioewfirebasebinding.R
 import com.example.agendacontatorecyclevioewfirebasebinding.databinding.FormularioLayoutBinding
+import com.example.agendacontatorecyclevioewfirebasebinding.model.Contato
 import com.example.agendacontatorecyclevioewfirebasebinding.viewmodel.ContatoViewModel
 
 class FormularioActivity : AppCompatActivity() {
